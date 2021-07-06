@@ -9,7 +9,7 @@ import kotlin.math.abs
  * - 2,5,8,0 -> 현재 키패드에서 가까운 엄지, 거리 동일 -> 오른/왼손 잡이에 따라 사용
  * @return R/L list
  * */
-class Solution {
+class Solution1 {
     fun solution(numbers: IntArray, hand: String): String {
         var answer = ""
 
@@ -69,6 +69,6 @@ class Solution {
 }
 
 fun main() {
-    val result = Solution().solution(intArrayOf(7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2), "left")
+    val result = Solution1().solution(intArrayOf(7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2), "left")
     println(result)
 }

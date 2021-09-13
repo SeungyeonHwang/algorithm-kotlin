@@ -7,39 +7,35 @@ import kotlin.math.abs
  *
  */
 class S002 {
-    fun solution(record: Array<String>): Array<Any> {
-        var answer = arrayOf<Any>()
-
-        record.forEach {
-            val history = it.split(" ")
-
-            val (id, name) = when (history.size) {
-                3 -> Pair(history[1], history[2])
-                else -> Pair(history[1], null)
-            }
-
-            answer += when (history.first()) {
-                "Enter" -> {
-                    when (name?.isNotEmpty()) {
-                        true -> ("${name}님이 들어왔습니다.")
-                        else -> ("${this.findNameById(record, id)}님이 들어왔습니다.")
-                    }
-
-                }
-                "Leave" -> ("${name}님이 나갔습니다.")
-                else -> "${this.findNameById(record, id)}님이 이름 변경."
-            }
-        }
-
-        return answer
+    companion object {
+        const val Enter = "님이 들어왔습니다."
+        const val Leave = "님이 나갔습니다."
     }
 
-    private fun findNameById(record: Array<String>, id: String): String {
-        val userHistory = record.filter {
-            it.split(" ")[1] == id
-        }
+    fun solution(record: Array<String>): Array<String> {
+        var answer = mutableListOf<String>()
+        var map = HashMap<String, String>()
 
-        return userHistory
+        record.forEach {
+            when (it.split(" ")[0]) {
+                "Enter", "Change" -> {
+                    val uid = it.split(" ")[1]
+                    val name = it.split(" ")[2]
+                    map[uid] = name
+                }
+            }
+        }
+        record.forEach {
+            when(it.split(" ")[0]) {
+                "Enter" -> {
+                    answer.add(map[it.split(" ")[1]] + Enter)
+                }
+                "Leave" -> {
+                    answer.add(map[it.split(" ")[1]] + Leave)
+                }
+            }
+        }
+        return answer.toTypedArray()
     }
 }
 

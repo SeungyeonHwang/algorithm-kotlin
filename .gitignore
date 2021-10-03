@@ -25,3 +25,12 @@ hs_err_pid*
 *.bin
 *.xml
 *.lock
+.gradle/checksums/checksums.lock
+.gradle/checksums/checksums.lock
+.gradle/checksums/md5-checksums.bin
+.gradle/checksums/sha1-checksums.bin
+.idea/algorithm-kotlin.iml
+.idea/compiler.xml
+.idea/gradle.xml
+.idea/misc.xml
+out/production/classes/META-INF/algorithm-kotlin.kotlin_module
